@@ -1,0 +1,514 @@
+# This  file is used as a default parameter's list
+# WARNING !!! This file shouldn't be modified
+# If you want to specify your own parameters do this in file named 
+# "parameters.dat"
+# Simply copy this file and remove all default prefixes from the names
+# Easy, doesn't it? You can also use already existing  file "parameters.dat"
+# it should be in your current directory
+# Why all this mess for? This file can save your life if you specify some
+# 	wrong values or you general forget to specify them.
+# So don't touch it, this file. Yes i know, you can modify it, mess in file
+# 	"parameters.dat" and the programme will get stuck. Good for you, happy?
+# After depending a parameter its value should be specified
+# If you want to specify the list of parameters each value shuld be followed i
+#	by ','
+# example
+# 	list = 1,2,3,4
+# allowed values are
+#	string
+#	double
+#	int (bool)
+# Don't worry, i'll describe each parameter in a proper place
+
+# Here you can define how much inputs the network have
+# Be careful. Learn data, and Test data should cooperate with this value 
+# (int)
+
+defaultInputs 	= 0
+
+
+# Yes, yes, this is the number of the network outputs
+# By the way, those two are NEEDED in your parameters.dat 
+# 	config file, and i mean it
+# Without describing them forget about everything 
+# (int)
+
+defaultOutputs 	= 0
+
+
+# Network must be taught. Here you can specify the learn parameter
+# Sometimes its value is very important, so think about your task 
+# 	for a while.	
+# (double)
+
+defaultLearnRate	= 0.9
+
+
+# This parameter makes Back Propagaion algorithm run faster
+# 	if you like running it slower, simply type '0'
+# By the way, the value of this parameter ranges from 0 to 1
+# (double)
+
+defaultMomentumRate 	= 1
+
+
+# Now. We gonna go a hard way. Here is the place for specyfing the 
+# ACTIVATION FUNCTION
+# If you don't know what it means, skip it. It was set 
+# 	"to be the best from the bests"
+# If you are wondering what you can do with this one just go ahead and read
+# Ok. I see you are interested in
+# Actually this program supports five types of activation functions
+# 0 - raw function. Output is the net value
+# 1 - unipolar function - outputs are 0 or 1
+# 2 - bipolar function - outputs are -1 or 1
+# 3 - sigmoidal function - outputs are continous and range from 0 to 1
+# 4 - bisigmoidal function - as above, but range from -1 to 1
+# 5 - logarithmic function 
+# For further information, look for .... hmmm ... i don't know. Take 
+# mathematical textbooks (if you don't understand what is written down)
+# For curious. If you want to add your own activation function, you will 
+#	have to modify the files activation_function.h, and 
+#	activation_functio.cc
+#	inside should be defined functions which allow you to create a whole
+#	function. Good luck !
+# (int)
+
+
+defaultActivationFunctionMode 			= 3
+
+
+# If you chose the type of function, here is the best time for 
+# 	its parameters entering
+# This is a kind of magic. Seriouslly. The number of parameters is stricly 
+#	connected with the type	of function. Yes, yes, i'll write what kind and
+#	and kow many parameters each function requires.
+# raw function - no parameters needed
+# unipolar function - one parameter, activation threshold. Normally set to 0
+# bipolar function - as above
+# unisigmoidal function - two parameters:
+#	first one is the threshold normally set to 0,
+#	second one describes how fast the function converges to 1
+#		enter value >= 1, and you get fast reaching function
+#		enter value <= 1, and function will be smoother
+# bisigmoidal function - as above
+# (double, double, ...., double)
+
+defaultActivationFunctionParametersList 	= 0, 1
+
+
+# Actually those parameters are not in use, but ... in future, who knows ...
+# (double, double, ...., double)
+
+defaultActivationDerivativeParametersList 	= 0,1
+
+
+# Back to working on the network learning
+# Here you can specify how many presentations of  the learn patterns can be made
+# When the network is dumm even 74573425729870987542307484057238754423075+3456
+# presentations won't do a thing, so give here some reasonable value. 
+# From my experieces i have chosen the value of 10000, and it's normally enought
+# But if the problem is big, i mean BIG, think about greater value
+# (int)
+
+defaultDataMaximalPresentationsCount 	= 10000
+
+
+# Pattern randomization means that each time learning set is shuffled
+#	if you enter here 1 randomization will take place
+#	if you enter here 0 there won't be randomization of patterns
+# (int)
+
+defaultRandomPattern 			= 1
+
+
+# Let's see some thing more ...
+# Here you can specify sufficient error. It means that each output
+# 	can differ from your expectation not more than ....
+# (double)
+ 
+defaultMaximalError 			= 0.01
+
+
+# Those two values are the weight values. In fact, those two parameters
+#	specify a range of weights values. Be careful. If you specify 
+#	some stupid values it'll be corrected
+# Specyfing the left >= right, has no sense, i'll check them .... 
+# (double)
+# (double)
+
+defaultLeftWeight 	= -1
+defaultRightWeight 	= 1
+
+
+# This parameter indicates whether bias should be used or not
+# 	if you don't know what i am talking about, read some papers about NN
+# It is good idea to use the bias
+# (int)
+
+defaultBiasMode 	= 1
+
+
+# This parameter is used for specyfing parameters for fitness function
+# Basicly you will use standard form of parameters list.
+# Each position determines the value of multiply factor.
+# Each position is used as a weight for each fitness part
+#	1. fac[0] * aConGen/conGen
+#	2. fac[1] * (1-aConGen/conGen)
+#	3. fac[2] * conGen/conMax
+#	4. fac[3] * (1-conGen/conMax)
+#	5. fac[4] * learnCnt/learnMax
+#	6. fac[5] * (1-learnCnt/learnMax)
+#	7. fac[6] * accTestCnt/testCnt
+#	8. fac[7] * (1-accTestCnt/testCnt)
+#	9. fac[8] * aConGen
+#	10.fac[9] * 1/aConGen
+#	11.fac[10]* conGen
+#	12.fac[11]* 1/conGen
+#	13.fac[12]* learnCnt
+#	14.fac[13]* 1/learnCnt
+#	15.fac[14]* accTestCnt
+#	16.fac[15]* 1/accTestCnt
+#	17.fac[16]* conMax
+#
+# The fitnes value goes fit = (1)+(2)+(3)+...+(15)+(16)+(17)
+# Using those factors gives you abbility to create diferent fitness functions.
+#	For example
+# 	setting fac[0],fac[1], fac[8] and fac[9] to 0 will totaly disable
+#	influence of active connections on fitness value
+# Description:
+#	aConGen - number of active connections in genotype
+#	conGen	- number of all connections in genotype
+#	conMax	- maximal number of connections inside network
+#	learnCnt- number of epochs used for getting network tought
+#	learnMax- maximal number of epochs for teaching a network
+#	accTestCnt - how many of the test patterns were succesfuly classified
+#	testCnt	- number of test patterns
+# Those parameters are dividet into three groups.
+#	first one is for bad networks
+#	second one is for good networks
+#	third one is for learned networks
+
+# Bad means that network is unable to get thought
+# Helpful numbering of positions  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6
+
+defaultFitnessParametersBad 	= 1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0
+
+# Good means that the network has possibility to be tought but it wasn't
+# Helpful numbering of positions  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6
+
+defaultFitnessParametersGood 	= 1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0
+
+
+# Learned means that learnig process accomplished succesfuly
+# Helpful numbering of positions  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6
+
+defaultFitnessParametersLearned = 1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0
+
+
+# This parameter is used for specifying wheter connections inside input
+#	area are allowed. By default they are ment not to be allowed
+# Options are:
+#	0 - no connections allowed
+#	1 - allow connections
+# (int)
+
+defaultConnectionsInsideInput	= 0
+
+
+# This parameter is used for specyfying wheter connections inside output
+#	area are allowed. By default they are ment not to be allowed
+# Options are:
+#	0 - no connections allowed
+#	1 - allow connections
+# (int)
+
+defaultConnectionsInsideOutput	= 0
+
+
+# This parameter decides wheter input vector is fully propagated into
+# 	input layer
+# By default each position of input vector is propagated to only one input
+#	neuron
+# (int)
+
+defaultSignalPropagation	= 0
+
+
+# This parameter determines which method of weights modification will be used
+# Options are:
+#	0 - standard weight modification. Momentum value is used
+#	1 - modified momentum modification
+#	2 - quick prop algorithm will be used (most time consuming)
+# Default value is set to 0
+# (int)
+
+defaultWeightModificationMode 	= 0
+
+
+# QuickProp parameter is a value used within this algorithm.
+# (double)
+
+defaultQuickPropParameter	= 0.1
+ 
+
+# This parameter isn't used yet
+# (double)
+
+defaultActivationThreshold = 0
+
+
+# Not used, yet
+# (int)
+
+defaultInitMode 		= 0
+
+
+# Ok. Eventually, The Some Genetic Algorithm Parameters
+# If you remember, each gene can be cross-overed, this parameter describes
+#	how much chance there is for cross-over
+#	inside the program there is generated random value
+#	if this random value is less than crossOverParameter the cross-over 
+#	takes place
+# Simple, isn't it ?
+# (double)
+
+defaultCrossOverParameter 	= 0.5
+
+
+# This one is even more exciting. You can mutate each position of gene 
+#	(don't think about Aladdin right now)
+#	inside program there is generated random value
+#	if this random value is less then mutationParameter mutation takes place
+# deja vu ??
+# (double)
+
+defaultMutationParameter 	= 0.01
+
+
+# Genetic operations need genetic material. Here you can specify how
+# 	much of individuals there will be in each population
+# Consider your choice. Entering a large value means the time, which will
+#	be taken for finding a best individual is longer
+# (int)
+
+defaultIndividualsCount 	= 50
+
+
+# This parameter decides how many neurons can be used in order to create 
+#	network. You have to remember, this network is feed forward network.
+#	So, entering a large value of genotype means there will be a plenty
+#	of connections, just slower calculation time
+# (int)
+
+defaultGenotypeSize 		= 20
+
+
+# Each genetic algorithm, in fact, does the same thing for a few times
+#	this is those times value
+# (int)
+
+defaultEpochsCount 		= 50
+
+
+# Transfer parameter describes how many individuals from population 
+#	will be transfered to other populations, 
+#	larg value - you will obtain one big population
+#	small value - you will have nothing but distributed computation
+#		with almost no communication
+#	choice is yours
+# (double)
+
+defaultTransferParameter 	= 0.1
+
+
+# This parameter shows how many epoch are nedeed for communication to take place
+# As above, but a little bit different
+#	small value - a lot of communication
+#	large value - almost none
+# (int)
+
+defaultCommunicationEpoch 	= 10
+
+
+# This parameter is used for determining wheter normalization should be done
+#	or not
+#	normally no normalization take place
+# (int)
+
+defaultNormalization		= 0
+
+
+# Those are the range of normalization
+#	-1 means that normalization will be done in range (0,1)
+# (double)
+
+defaultLeftNorm			= -1
+defaultRightNorm		= -1
+
+
+# This parameter means that after calculating fitness it will be recalculated
+#	New value of fitness will depend on position of individual in population
+# (int)
+
+defaultFitnessByPosition	= 0
+
+
+# This parameter is used for telling me how many times shuld i check for
+#	each individual fitness. Sometimes network can be given a wrong
+#	score, becouse of bad luck. Learning process depends on random
+#	values. Randomization of "bad" values can make netwok unlearnable
+#	For getting better view on each network it is preffered to learn it
+#	couple of times. I think three times is enough. If you think it's 
+#	to much	or you want to get better fitnes type in coresponding 0 or > 3
+
+defaultFitnesCount		= 3
+
+
+# This parameter is used for setting up the count of individuals written
+#	to log file in each population
+#	-1 means that each individual will be loged
+# (int)
+
+defaultPopulationLogCount = -1
+
+
+# This is a parallel application. It means that it should have some parallel
+# 	architecture. In this program architecture is mesh-wrap-around
+#	If you want to specify some weird sizes of it  you can do it here
+#	For default the size of mesh is set to -1,-1. It means that program 
+#	will try to figure out the size of mesh depending on processes count
+#	If you specifi them wrong it will be corrected
+# This is the width of the mesh	
+# (int)
+
+defaultMeshWidth		= -1
+
+
+# And this is the height of the mesh
+# (int)
+
+defaultMeshHeight		= -1
+
+
+# Here you can specify some file names, which will help you to receive your 
+#	outputs	from the program to proper place 
+
+# Here you can specify the name of directory in with all data will be stored
+# Yes ... giving a wrong directory name or having incorect permisions will
+#	cause a DISASTER !!!
+# Yes, i'm overreacting
+# (string)
+
+defaultOutputDir 		= /tmp/
+
+
+# This file name is a base file name. It means that each process will use it
+#	as a prefix of its output file name
+#	sufix is a process number (0 ... n-1), where n is a number of runnig
+#		processes
+# You should not specify a directory here (use parameter above), unless you
+#	are looking for some troubles. If you do so, go ahed type something 
+#	like this "/directory/for/my/output/file.name." and be proud of yourself
+# (string)
+
+defaultFileBaseName 		= log.data.out.
+
+
+# Next parameter determines how much memory can be taken for LOG
+#	structure. It can be important
+#	giving it a big value will cause less disk writes, but will be more
+#		memory consuming. This means that swap can turn on, but we
+#		definetly don't like swap turning on
+#	giving it a small value will cause more disk writes, but you
+#		will have more memory for other data structures
+#	there is no best value for this one. Just consider your situation
+#	Memory usage is approximatly (256+2+4+4+16) for each LOG structure, so
+#	for 1000 LOG structures it will consume 282000B of your memory
+#	maybe small may be not to small.
+# For your information, time of each data write is calculated and added to LOG
+#	After all, you will be noticed how much time of computation
+#	is consumed for file operations. Isn't that cute ? 
+# (int)
+
+defaultLogSize 			= 1000 
+
+
+# This parameter is responsible for testing neural network
+#	if you set it to 1 the network structure will be read from
+#	stdin. After that it will be learned. Result will be showed to you
+# (int)
+
+defaultTestNetwork		= 0
+
+
+# This parameter is responsible for showing up the learning process
+#	it may help sometimes
+# (int)
+
+defaultShowLearningProcess 	= 0
+
+
+# All messages are printed out to stdout. Here you can specify alternate
+#	file name, and decide whether you want those messages
+#	To improve your calculation you can turn off messages displaying 
+#	but you won't be able to follow program run
+#	if parameter == 0 - data will be printed to stdout
+#	if parameter == 1 - data will be printed to specified file
+#		if file name == "", or file can not be created
+#		no data will be printed out
+#	if this parameter is a list each process can have different way
+#	of behaviour
+#	for example
+#	StdOut = 0,1,1,1
+#	means that process 0 will print out data to screen, and processes 123
+#	will print out data to file
+# Most important data will be written down in LOG file
+#	
+# (int)
+
+defaultStdOut 			= 0
+
+
+# This is the name of alternate stdout file name
+
+defaultStdOutFileName 		= stdout.from.process.
+
+
+# If you haven't specified some parameters or they are wrong program will try
+#	to operate depending on this file. But if you want the program to stop
+#	specify here 0 
+# (int)
+
+defaultForce			= 1
+
+
+# Here is the key of all this. Learn data. The data which is used for teaching
+#	the network.
+# Suggestion 1
+#	Create them properly if you want your networks to learn
+# Suggestion 2
+#	use tabulator as a separator of inputs and output, it is easer to
+#	read them
+# Suggestion 3
+#	This file name should point a proper file, and you should
+#	have permision for reading it
+# Suggestion 4
+#	make yourself a cup of tea
+# (string)
+
+defaultLearnDataFileName 	= /opt/test/learn.data
+
+
+# Here is the right place for providing test data. After getting fully learned
+# 	network it can be checked for never seen data
+# Suggestions, as above
+# (string)
+
+defaultTestDataFileName 	= /opt/test/test.data
+
+
+# end of default data file 
+# one more suggestion. make sure there is a new line character at the end
+# of your data file
+

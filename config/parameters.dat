@@ -1,0 +1,64 @@
+Inputs = 2
+Outputs = 1
+
+LearnRate = 0.4
+MomentumRate = 0.9
+
+ActivationFunctionMode = 4
+ActivationFunctionParametersList = 0,1
+ActivationDerivativeParametersList = 0,1
+
+DataMaximalPresentationsCount = 1000
+MaximalError = 0.3
+
+LeftWeight = -1
+RightWeight = 1
+BiasMode = 1
+
+CrossOverParameter = 0.8
+MutationParameter = 0.01
+
+IndividualsCount = 144
+GenotypeSize =10
+FitnesCount = 1
+
+MeshWidth = -1
+MeshHeight = -1
+
+# Helpful numbering       0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5
+FitnessParametersBad = 0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,-1 
+FitnessParametersGood = 0,0,0,2,0,0,2,0,0,2,0,2,0,2,0,2,0
+FitnessParametersLearned= 0,0,0,20,0,0,20,0,0,20,0,20,0,20,0,20,0
+
+
+ConnectionsInsideInput = 0
+ConnectionsInsideOutput = 0
+
+EpochsCount = 50
+TransferParameter = 0.1
+
+CommunicationEpoch = 20
+
+RandomPattern = 1
+
+WeightModificationMethod = 1
+QuickPropParameter = 0.1
+
+FitnessByPosition = 1
+
+SignalPropagation = 0
+PopulationLogCount = 1
+
+StdOut = 0,1,1,1,1,1,1,1
+StdOutFileName = stdout
+
+TestNetwork = 0
+ShowLearningProcess = 0
+Force = 1
+
+OutputDir = /opt/test/out
+FileBaseName = dane.
+LearnDataFileName = /opt/test/learn.xor
+TestDataFileName = /opt/test/test.xor
+LogSize = 1000
+
