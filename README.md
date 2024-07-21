@@ -1,5 +1,5 @@
 # Master's Thesis Supplement
-# G(enetic)A(lgorithm)B(ack)P(ropagation)
+** G(enetic)A(lgorithm)B(ack)P(ropagation) **
 
 This repository contains supplementary materials for a Master's Thesis titled:
 
