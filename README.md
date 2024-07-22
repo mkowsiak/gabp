@@ -36,4 +36,4 @@ All you need is `Git` and `Docker`.
 
 # Note
 
-Please note this code is more than 20 years old. Still compiles and run though ;) It was not maintained since.
+Please note that this code is more than 20 years old. Still compiles and run though ;) It was not maintained since.
